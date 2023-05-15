@@ -3,7 +3,9 @@ import Star from '../images/icon-star.svg'
 import ThankYou from "../images/illustration-thank-you.svg"
 
 export default function Rate() {
+
   const [submitted, setSubmitted] = useState(false)
+  const [rating, setRating] = useState("0")
     return (
         <>
           {!submitted && (<section className="rating-container">
@@ -18,45 +20,44 @@ export default function Rate() {
                   our offering!
                 </p>
                 <div className="scale-container">
-                  <ScaleButton scale={1}/>
-                  <ScaleButton scale={2}/>
-                  <ScaleButton scale={3}/>
-                  <ScaleButton scale={4}/>
-                  <ScaleButton scale={5}/>
+                  <RatingButton number={1}/>
+                  <RatingButton number={2}/>
+                  <RatingButton number={3}/>
+                  <RatingButton number={4}/>
+                  <RatingButton number={5}/>
                 </div>
                 <SubmitButton />            
               </div>
           </section>)}
-          {submitted && <Rated />}
+          {submitted && <Rated rating={rating} />}
         </>
     )
-}
 
 function SubmitButton() {
   return (
       <button
+      onClick={() => setSubmitted(true)}
         className="submit-btn">
           SUBMIT
       </button>  
   )     
 }
 
-function ScaleButton({ scale }) {
+function RatingButton({ number }) {
   return (
       <button
-        onClick={() => (scale)}>
-          {scale}
+        onClick={() => setRating(number)}>
+          {number}
       </button> 
   )
 }
 
-
-function Rated() {
+function Rated({rating}) {
   return (
       <section className="rating-container">
           <div className="rated-wrapper">
               <img className="ty-img" src={ThankYou} alt="thankyouart"/>
-              <p className="selected">You selected out of 5</p>
+              <p className="selected">You selected {rating} out of 5</p>
               <h1>Thank you!</h1>
               <p className="ty-msg">
                   We appreciate you taking the time to give a rating.
@@ -66,3 +67,4 @@ function Rated() {
       </section>
   )
 }
+};
