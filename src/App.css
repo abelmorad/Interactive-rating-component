@@ -43,7 +43,6 @@ body {
   flex-direction: column;
   background-color: var(--color-neutral-db);
   border-radius: 18px;
-  height: 400px;
   padding: 1.5rem 1.5rem;
 }
 .star-container {
@@ -92,11 +91,14 @@ body {
   border: none;
   outline: none;
   border-radius: 50px;
-  transition: 0.2s;
+  transition: 0.4s;
   cursor: pointer;
 }
 .scale-container button:hover {
   background-color: var(--color-primary);
+}
+.scale-container button:focus {
+  background-color: var(--color-neutral-lg);
 }
 .submit-btn {
   font-size: 1rem;
@@ -108,6 +110,11 @@ body {
   background-color: var(--color-primary);
   border: none;
   cursor: pointer;
+  transition: 0.1s;
+}
+.submit-btn:hover {
+  background-color: var(--color-neutral-w);
+  color: var(--color-primary);
 }
 /* Rated.jsx */
 .rated-wrapper {

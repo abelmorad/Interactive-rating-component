@@ -1,25 +1,9 @@
-import React from "react";
 import { useState } from 'react'
 import Star from '../images/icon-star.svg'
+import Rated from './Rated'
 
-function Rate() {
-  const [isActive, setIsActive] = useState(false)
-  const handleClick = () => {
-    setIsActive(!isActive)
-  }
-
-  const buttons = [
-    {id: 1, scale: "1"},
-    {id: 2, scale: "2"},
-    {id: 3, scale: "3"},
-    {id: 4, scale: "4"},
-    {id: 5, scale: "5"},
-  ]
-  const [selectScale, setSelectScale] = useState(0)
-  const handleScaleColor = (row) => {
-  setSelectScale(row.id)
-}
-
+export default function Rate() {
+  
     return (
         <main className="App">
           <section className="rating-container">
@@ -34,26 +18,35 @@ function Rate() {
                   our offering!
                 </p>
                 <div className="scale-container">
-                 {buttons.map((button) => (
-                  <button
-                    key={button.id}
-                    onClick={() => handleScaleColor(button)}
-                    style={{ backgroundColor: button.id === selectScale ? "hsl(217, 12%, 63%)" : ""}}>
-                    {button.scale}
-                  </button>
-                 ))}
+                  <ScaleButton scale={1}/>
+                  <ScaleButton scale={2}/>
+                  <ScaleButton scale={3}/>
+                  <ScaleButton scale={4}/>
+                  <ScaleButton scale={5}/>
                 </div>
-                <button
-                onClick={handleClick}
-                style={{
-                  backgroundColor: isActive ? "hsl(0, 0%, 100%)" : "",
-                  color: isActive ? "hsl(25, 97%, 53%)" : "",
-                }}
-                className="submit-btn">SUBMIT</button>              
+                <SubmitButton />            
               </div>
           </section>
         </main>
     )
 }
 
-export default Rate
+function SubmitButton() {
+
+  return (
+      <button
+        className="submit-btn">
+          SUBMIT
+      </button>  
+  )
+      
+}
+
+function ScaleButton({scale}) {
+
+return (
+      <button>
+        {scale}
+      </button>
+)
+}
