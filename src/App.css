@@ -78,7 +78,7 @@ body {
   justify-content: space-between;
   margin: 1.5rem 0rem;
 }
-.scale-container button {
+.rating-btn{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,15 +94,19 @@ body {
   border-radius: 50px;
   cursor: pointer;
 }
+.rating-btn:focus {
+  background-color: var(--color-neutral-lg);
+}
+.rating-btn:hover {
+  background-color: var(--color-primary);
+}
 @media (min-width: 1440px) {
-  .scale-container button {
+  .rating-btn {
     height: 50px;
     width: 50px;
   }
 }
-.scale-container button:hover {
-  background-color: var(--color-primary);
-}
+
 .submit-btn {
   font-size: 1rem;
   font-weight: 700;

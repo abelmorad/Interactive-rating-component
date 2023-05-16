@@ -6,6 +6,7 @@ export default function Rate() {
 
   const [submitted, setSubmitted] = useState(false)
   const [rating, setRating] = useState("0")
+
     return (
         <>
           {!submitted && (<section className="rating-container">
@@ -29,27 +30,28 @@ export default function Rate() {
                 <SubmitButton />            
               </div>
           </section>)}
-          {submitted && <Rated rating={rating} />}
+          {submitted  && <Rated rating={rating} />}
         </>
     )
+function RatingButton({ number }) {
+  return (
+      <button
+        className='rating-btn'
+        onClick={() => setRating(number)}
+      >
+          {number}
+      </button> 
+  )
+}
 
 function SubmitButton() {
   return (
       <button
-      onClick={() => setSubmitted(true)}
+      onClick={() => {setSubmitted(true)}}
         className="submit-btn">
           SUBMIT
       </button>  
   )     
-}
-
-function RatingButton({ number }) {
-  return (
-      <button
-        onClick={() => setRating(number)}>
-          {number}
-      </button> 
-  )
 }
 
 function Rated({rating}) {
